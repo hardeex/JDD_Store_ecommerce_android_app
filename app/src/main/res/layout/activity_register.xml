@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".code.ui.activities.RegisterActivity">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar_title_register"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/header_background">
+
+            <ImageView
+                android:id="@+id/header_back_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/defaultPadding"
+                android:src="@drawable/ic_back_arrow" />
+
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomItalicBoldTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="@dimen/defaultPadding"
+                android:text="Create Account"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/headerTextSize" />
+
+        </androidx.appcompat.widget.Toolbar>
+        
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_firstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolBar_title_register"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/ic_error"
+            android:layout_marginStart="@dimen/marginStart"
+            android:layout_marginEnd="@dimen/marginEnd"
+            android:padding="@dimen/defaultPadding"
+            android:layout_marginTop="@dimen/marginTop"
+            app:endIconMode="clear_text"
+            android:focusableInTouchMode="true"
+            app:endIconTint="@color/jddColor">
+            
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="First Name"
+                android:inputType="text"
+                android:textSize="@dimen/defaultTextSize"/>
+            
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_lastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/register_firstName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/ic_error"
+            android:layout_marginStart="@dimen/marginStart"
+            android:layout_marginEnd="@dimen/marginEnd"
+            android:padding="@dimen/defaultPadding"
+            android:layout_marginTop="@dimen/marginTop"
+            app:endIconMode="clear_text"
+            android:focusableInTouchMode="true"
+            app:endIconTint="@color/jddColor">
+
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Last Name"
+                android:inputType="text"
+                android:textSize="@dimen/defaultTextSize"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/register_lastName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/ic_error"
+            app:startIconDrawable="@drawable/ic_login_email"
+            android:layout_marginStart="@dimen/marginStart"
+            android:layout_marginEnd="@dimen/marginEnd"
+            android:padding="@dimen/defaultPadding"
+            android:layout_marginTop="@dimen/marginTop"
+            app:endIconMode="clear_text"
+            android:focusableInTouchMode="true"
+            app:endIconTint="@color/jddColor">
+
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textSize="@dimen/defaultTextSize"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/register_Email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/ic_error"
+            app:startIconDrawable="@drawable/ic_login_password_lock"
+            android:layout_marginStart="@dimen/marginStart"
+            android:layout_marginEnd="@dimen/marginEnd"
+            android:padding="@dimen/defaultPadding"
+            android:layout_marginTop="@dimen/marginTop"
+            app:endIconMode="password_toggle"
+            android:focusableInTouchMode="true"
+            app:endIconTint="@color/jddColor">
+
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textSize="@dimen/defaultTextSize"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/register_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/ic_error"
+            app:startIconDrawable="@drawable/ic_login_password_lock"
+            android:layout_marginStart="@dimen/marginStart"
+            android:layout_marginEnd="@dimen/marginEnd"
+            android:padding="@dimen/defaultPadding"
+            android:layout_marginTop="@dimen/marginTop"
+            app:endIconMode="password_toggle"
+            android:focusableInTouchMode="true"
+            app:endIconTint="@color/jddColor">
+
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:textSize="@dimen/defaultTextSize"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_terms_and_condition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/register_confirm_password"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/marginStart"
+            android:layout_marginTop="@dimen/marginTop"
+            android:layout_marginEnd="@dimen/marginEnd"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/checkBox_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:checked="false"
+                android:gravity="center" />
+
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomTextViewBold
+                android:id="@+id/tv_terms_and_conditions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I agree with the Terms &amp; Condition"
+                android:textSize="@dimen/defaultTextSize" />
+
+        </LinearLayout>
+
+        <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomButton
+            android:id="@+id/btn_signUP_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_terms_and_condition"
+            android:layout_marginStart="@dimen/marginStart"
+            android:layout_marginTop="@dimen/marginTop"
+            android:layout_marginEnd="@dimen/marginEnd"
+            android:background="@drawable/button_background"
+            android:padding="@dimen/defaultPadding"
+            android:text="Sign Up"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/headerTextSize" />
+
+        <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomButton
+            android:id="@+id/btn_login_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_signUP_register"
+            android:background="#00000000"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/marginTop"
+            android:padding="@dimen/defaultPadding"
+            android:text="Login"
+            android:textAllCaps="true"
+            android:textSize="@dimen/headerTextSize"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+</ScrollView>

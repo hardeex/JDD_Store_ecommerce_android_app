@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".code.ui.activities.UserProfileCompleteActivity"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:fillViewport="true"
+    android:foregroundGravity="center"
+    app:layout_anchorGravity="center">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar_title_userProfile"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:background="@drawable/header_background">
+
+            <ImageView
+                android:id="@+id/header_back_arrow_userProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/defaultPadding"
+                android:src="@drawable/ic_back_arrow" />
+
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomItalicBoldTextView
+                android:id="@+id/tv_complete_userProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="@dimen/defaultPadding"
+                android:text="Complete   Profile"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/headerTextSize" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <FrameLayout
+            android:id="@+id/FL_defaultProfilePic"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/userProfilePicture_marginTop"
+            android:foregroundGravity="center"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/userProfilePicture"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white_gray"
+                android:scaleType="fitXY"
+                android:src="@drawable/default_profile_picture" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/user_profile_outline" />
+
+        </FrameLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/userProfile_firstname"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+          android:layout_below="@id/FL_defaultProfilePic"
+          android:layout_marginTop="@dimen/marginTop"
+          android:layout_marginStart="@dimen/marginStart"
+          android:layout_marginEnd="@dimen/marginEnd"
+          app:boxStrokeWidthFocused="@dimen/boxStrokeWidthFocused">
+
+          <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomEditText
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:hint="First Name"
+              android:inputType="textPersonName"/>
+
+
+      </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/userProfile_lastname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_below="@id/userProfile_firstname"
+            android:layout_marginTop="@dimen/completeProfile_marginTop"
+            android:layout_marginStart="@dimen/marginStart"
+            android:layout_marginEnd="@dimen/marginEnd"
+            app:boxStrokeWidthFocused="@dimen/boxStrokeWidthFocused">
+
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Last Name"
+                android:inputType="textPersonName"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/userProfile_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_below="@id/userProfile_lastname"
+            android:layout_marginTop="@dimen/completeProfile_marginTop"
+            android:layout_marginStart="@dimen/marginStart"
+            android:layout_marginEnd="@dimen/marginEnd"
+            app:boxStrokeWidthFocused="@dimen/boxStrokeWidthFocused">
+
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Email"
+                android:inputType="textPersonName"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/userProfilePhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_marginStart="@dimen/marginStart"
+            android:layout_marginEnd="@dimen/marginEnd"
+            android:layout_marginTop="@dimen/completeProfile_marginTop"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/ic_error"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/black"
+            android:focusableInTouchMode="true"
+            android:layout_below="@id/userProfile_email"
+            app:boxStrokeWidthFocused="2dp"
+            app:hintTextColor="@color/black">
+
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Phone Number"
+                android:inputType="phone"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RadioGroup
+            android:id="@+id/gender_radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="@dimen/marginStart"
+            android:layout_marginEnd="@dimen/marginEnd"
+            android:layout_marginTop="@dimen/marginTop"
+            android:layout_below="@id/userProfilePhoneNumber">
+
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomRadioButton
+                android:id="@+id/userGender_male"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="MALE"
+                android:textAllCaps="true"
+                android:button="@null"
+                android:background="@drawable/gender_tab_selector"
+                android:textColor="@drawable/gender_text_color_selector"
+                android:gravity="center"
+                android:padding="10dp" />
+
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomRadioButton
+                android:id="@+id/userGender_female"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="FEMALE"
+                android:textAllCaps="true"
+                android:button="@null"
+                android:background="@drawable/gender_tab_selector"
+                android:textColor="@drawable/gender_text_color_selector"
+                android:gravity="center"
+                android:padding="10dp"
+                android:layout_marginStart="@dimen/marginStart"/>
+
+        </RadioGroup>
+
+        <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomButton
+            android:id="@+id/btnSave_completeProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gender_radioGroup"
+            android:layout_marginStart="@dimen/marginStart"
+            android:layout_marginTop="@dimen/completeProfile_marginTop"
+            android:layout_marginEnd="@dimen/marginEnd"
+            android:background="@drawable/button_background"
+            android:padding="@dimen/defaultPadding"
+            android:text="save"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/headerTextSize" />
+
+    </RelativeLayout>
+
+</ScrollView>

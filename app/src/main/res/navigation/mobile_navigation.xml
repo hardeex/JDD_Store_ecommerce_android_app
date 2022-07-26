@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_dashboard">
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="jdd.com.ng.jddwebmaster.jddstore.code.ui.fragment.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_product" />
+
+    <fragment
+        android:id="@+id/navigation_product"
+        android:name="jdd.com.ng.jddwebmaster.jddstore.code.ui.fragment.ProductFragment"
+        android:label="@string/title_product"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_orders"
+        android:name="jdd.com.ng.jddwebmaster.jddstore.code.ui.fragment.OrderFragment"
+        android:label="@string/title_orders"
+        tools:layout="@layout/fragment_order" />
+    <fragment
+        android:id="@+id/websiteFragment"
+        android:name="jdd.com.ng.jddwebmaster.jddstore.WebsiteFragment"
+        android:label="fragment_website"
+        tools:layout="@layout/fragment_website" />
+
+</navigation>

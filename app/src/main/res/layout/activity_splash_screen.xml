@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".code.ui.activities.SplashScreen">
+
+
+    <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomItalicBoldTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/defaultPadding"
+        android:text="Buy and Sell Digital Products"
+        android:textStyle="italic"
+        android:textAllCaps="true"
+        android:textSize="@dimen/headerTextSize"
+        app:layout_constraintBottom_toTopOf="@+id/jdd_logo_splash_screen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/jdd_logo_splash_screen"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_jards_logo_1_05"
+        app:layout_constraintBottom_toTopOf="@+id/myCustomTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/jdd_logo" />
+
+    <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomTextViewBold
+        android:id="@+id/myCustomTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/powered_by_jdd_webmaster_ltd"
+        android:textSize="@dimen/defaultPadding"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="@dimen/defaultPadding"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

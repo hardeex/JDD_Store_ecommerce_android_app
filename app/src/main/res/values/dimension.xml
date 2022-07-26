@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="defaultPadding">10dp</dimen>
+    <dimen name="btnEditPadding">15dp</dimen>
+    <dimen name="splashscreenTextSize">20sp</dimen>
+    <dimen name="button_background_radius">10dp</dimen>
+
+    <dimen name="defaultMargin">10dp</dimen>
+    <dimen name="marginStart">22dp</dimen>
+    <dimen name="marginEnd">22dp</dimen>
+    <dimen name="marginTop">10dp</dimen>
+    <dimen name="completeProfile_marginTop">20dp</dimen>
+    <dimen name="marginBottom">10dp</dimen>
+    <dimen name="userProfilePicture_marginTop">70dp</dimen>
+    <dimen name="boxStrokeWidthFocused">2dp</dimen>
+    <dimen name="genderSelectorRadius">6dp</dimen>
+
+    <dimen name="defaultTextSize">14sp</dimen>
+    <dimen name="headerTextSize">16sp</dimen>
+    <dimen name="btnEdit_settingTextSize">20sp</dimen>
+
+</resources>

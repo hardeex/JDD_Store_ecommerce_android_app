@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/title_dashboard" />
+
+    <item
+        android:id="@+id/navigation_product"
+        android:icon="@drawable/ic_baseline_local_grocery_store_24"
+        android:title="@string/title_product" />
+
+    <item
+        android:id="@+id/navigation_orders"
+        android:icon="@drawable/ic_baseline_shopping_bag_24"
+        android:title="@string/title_orders" />
+
+    <item
+        android:id="@+id/chatFragment"
+        android:icon="@drawable/ic_chat"
+        android:title="Chat"/>
+
+    <item
+        android:id="@+id/websiteFragment"
+        android:icon="@drawable/website_icon"
+        android:title="Website"/>
+
+
+</menu>
