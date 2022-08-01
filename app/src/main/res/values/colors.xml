@@ -17,4 +17,9 @@
     <color name="white_grish">#8C8C8C</color>
     <color name="snackBarError_color">#FF0000</color>
     <color name="snackBarSuccess_color">#009600</color>
+    <color name="product_background_color">#E1E1E1</color>
+    <color name="addProduct_layout_background_color">#F8F8F8</color>
+    <color name="item_value_text_color">#545353</color>
+    
+    <color name="dashboard_item_details_bg">#F3F3F3</color>
 </resources>

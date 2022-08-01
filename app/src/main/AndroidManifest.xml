@@ -12,14 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JDDStore">
         <activity
+            android:name=".code.ui.activities.AddProductActivity"
+            android:exported="false" />
+        <activity
             android:name=".code.ui.activities.SettingsActivity"
             android:exported="false" />
-        <activity
-            android:name=".code.ui.fragment.WebViewActivity"
-            android:exported="false" />
-        <activity
-            android:name=".code.ui.fragment.ChatActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".code.ui.fragment.WebViewActivity"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".code.ui.fragment.ChatActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".code.ui.activities.DashboardActivity"
             android:exported="false"

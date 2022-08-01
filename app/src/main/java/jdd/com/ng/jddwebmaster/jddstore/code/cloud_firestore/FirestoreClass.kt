@@ -5,15 +5,17 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
+import jdd.com.ng.jddwebmaster.jddstore.code.model.Product
 import jdd.com.ng.jddwebmaster.jddstore.code.model.User
-import jdd.com.ng.jddwebmaster.jddstore.code.ui.activities.LoginActivity
-import jdd.com.ng.jddwebmaster.jddstore.code.ui.activities.RegisterActivity
-import jdd.com.ng.jddwebmaster.jddstore.code.ui.activities.SettingsActivity
-import jdd.com.ng.jddwebmaster.jddstore.code.ui.activities.UserProfileCompleteActivity
+import jdd.com.ng.jddwebmaster.jddstore.code.ui.activities.*
+import jdd.com.ng.jddwebmaster.jddstore.code.ui.fragment.DashboardFragment
+import jdd.com.ng.jddwebmaster.jddstore.code.ui.fragment.ProductFragment
 import jdd.com.ng.jddwebmaster.jddstore.code.utils.Constant
 
 
@@ -24,7 +26,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
  */
      private val mFirestore = FirebaseFirestore.getInstance()
 
-     fun passUserInfoToFirestore(activity: RegisterActivity, user:User){
+     fun uploadUserDetails(activity: RegisterActivity, user:User){
           // This method is to some of the user data to the Google Firestore
           mFirestore.collection(Constant.SUBSCRIBERS).document(user.id).set(user, SetOptions.merge())
 
@@ -37,7 +39,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
                }
      }
 
-     private fun getUserCurrentID(): String {
+      fun getUserCurrentID(): String {
           // This method is to get user ID from the Google Authentication module
           val currentUser = FirebaseAuth.getInstance().currentUser
           var currentUserID = ""
@@ -117,10 +119,10 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
                }
      }
 
-     fun uploadImageToCloudStorage(activity: Activity, imageFileURI: Uri?){
+     fun uploadImageToCloudStorage(activity: Activity, imageFileURI: Uri?, imageType: String){
           // get the storage reference
           val storageReference = FirebaseStorage.getInstance().reference
-               .child(Constant.USER_PROFILE_IMAGE + System.currentTimeMillis() + "."
+               .child(imageType + System.currentTimeMillis() + "."
                        + Constant.getFileExtension(activity, imageFileURI))
 
           storageReference.putFile(imageFileURI!!).addOnSuccessListener { taskSnapShot->
@@ -134,6 +136,11 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
                               is UserProfileCompleteActivity ->{
                                    activity.imageUploadToCloudStorageSuccessfully(uri.toString())
                               }
+
+                              is AddProductActivity->{
+                                   activity.productImageUploadedSuccessfully(imageFileURI.toString())
+                              }
+
                          }
                     }
           }
@@ -143,10 +150,83 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
                          is UserProfileCompleteActivity ->{
                               activity.dismissProgressDialogue()
                          }
+
+                         is AddProductActivity->{
+                              activity.dismissProgressDialogue()
+                         }
                     }
                     Log.e(activity.javaClass.simpleName, exception.message, exception)
                }
 
+     }
+
+     fun uploadProductDetails(activity: AddProductActivity, productDetails: Product){
+          mFirestore.collection(Constant.PRODUCT).document().set(productDetails, SetOptions.merge())
+
+               .addOnSuccessListener {
+                    activity.productUploadSuccessfully()
+               }
+
+               .addOnFailureListener { error->
+                    activity.dismissProgressDialogue()
+                    Log.e(activity.javaClass.simpleName, "Error!!! uploading product to the Firestore", error)
+               }
+
+     }
+
+     fun getProductDetails(fragment: Fragment){
+          mFirestore.collection(Constant.PRODUCT).whereEqualTo(Constant.USER_ID, getUserCurrentID()).get()
+
+               .addOnSuccessListener {document->
+                    Log.i("Product Details", document.documents.toString())
+                    val productList: ArrayList<Product> = ArrayList()
+                    // check all the product list in the document
+                    for (i in document.documents){
+                         // create a product object variable
+                         val product = i.toObject(Product::class.java)
+                         // the product ID
+                         if (product != null) {
+                              product.product_id = i.id
+                         }
+                         if (product != null) {
+                              productList.add(product)
+                         }
+                    }
+
+                    when(fragment){
+                         is ProductFragment->{
+                              fragment.successProductListFromFirestore(productList)
+                         }
+                    }
+               }
+               .addOnFailureListener { error->
+                    Log.i(fragment.javaClass.simpleName, "Error!!! Getting product lists from the cloud", error)
+               }
+     }
+
+     fun getDashboardItemList(fragment: DashboardFragment){
+          mFirestore.collection(Constant.PRODUCT).get()
+
+               .addOnSuccessListener { document->
+                    Log.i(fragment.javaClass.simpleName, document.documents.toString())
+                    // create an array of productList
+                    val productList:ArrayList<Product> = ArrayList()
+
+                    for (i in document.documents){
+                         // create a product object variable
+                         val product = i.toObject(Product::class.java)!!
+                         // the product ID
+                         product.product_id = i.id
+                         productList.add(product)
+                    }
+                    fragment.successDashboardItemListFromFirestore(productList)
+               }
+               .addOnFailureListener { error->
+                    fragment.dismissProgressDialogue()
+                    Log.e(fragment.javaClass.simpleName, "Error!!! Getting dashboard product item list...", error)
+
+
+               }
      }
 
 

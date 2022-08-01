@@ -19,4 +19,26 @@
     <dimen name="headerTextSize">16sp</dimen>
     <dimen name="btnEdit_settingTextSize">20sp</dimen>
 
+    <dimen name="image_height_addProduct">250dp</dimen>
+    
+    <dimen name="item_list_marginTop">16dp</dimen>
+    <dimen name="item_image_title_price_marginStart">10dp</dimen>
+    <dimen name="item_list_padding">10dp</dimen>
+    <dimen name="item_image_padding">2dp</dimen>
+    <dimen name="item_image_width">80dp</dimen>
+    <dimen name="item_image_height">70dp</dimen>
+    <dimen name="rv_item_name_textSize">14sp</dimen>
+    <dimen name="rv_item_price_marginTop">2dp</dimen>
+    <dimen name="rv_item_price_textSize">12sp</dimen>
+    
+    <dimen name="item_dashboard_margin">5dp</dimen>
+    <dimen name="item_dashboard_padding">5dp</dimen>
+    <dimen name="item_dashboard_image_height">150dp</dimen>
+    <dimen name="item_dashboard_image_margin">10dp</dimen>
+    <dimen name="divider_height">1dp</dimen>
+    <dimen name="item_dashboard_paddingStartEnd">10dp</dimen>
+    <dimen name="item_dashboard_paddingTopBottom">5dp</dimen>
+    <dimen name="item_dashboard_textSize">12sp</dimen>
+    <dimen name="item_dashboard_price_marginTop">2dp</dimen>
+
 </resources>

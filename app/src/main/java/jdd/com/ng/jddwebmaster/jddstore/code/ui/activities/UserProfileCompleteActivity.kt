@@ -240,7 +240,7 @@ class UserProfileCompleteActivity : BaseActivity(), View.OnClickListener {
                     if (validateUserProfileDetails()){
                         showProgressDialogue("Please Wait...")
                         if (mSelectedImageURI !=null){
-                            FirestoreClass().uploadImageToCloudStorage(this, mSelectedImageURI)
+                            FirestoreClass().uploadImageToCloudStorage(this, mSelectedImageURI, Constant.USER_PROFILE_IMAGE)
                         } else{
                             updateUserProfileDetails()
                         }
@@ -298,24 +298,6 @@ class UserProfileCompleteActivity : BaseActivity(), View.OnClickListener {
                 }
             }
         }
-//        super.registerForActivityResult(ActivityResultContracts.StartActivityForResult(requestCode, resultCode, data)){
-//            if (requestCode == Activity.RESULT_OK){
-//                if (requestCode == Constant.PICK_IMAGE_REQUEST_CODE){
-//                    if (data !=null){
-//                        try {
-//                            val selectedImageFileURI = data.data
-//                            userProfilePicture.setImageURI(selectedImageFileURI)
-//                        } catch (e: IOException){
-//                            e.printStackTrace()
-//                            Toast.makeText(this, "Error!!! Uploading Profile Picture", Toast.LENGTH_SHORT).show()
-//                        }
-//                    }
-//                }
-//            }
-//    }
-
-
-
 
     }
 

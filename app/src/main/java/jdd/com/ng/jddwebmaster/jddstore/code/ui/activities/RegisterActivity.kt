@@ -184,7 +184,7 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
                                 // TODO: Make the collection identifier from the Firestore email instead of the uid
 
                             // registering the user in the cloud
-                            FirestoreClass().passUserInfoToFirestore(this@RegisterActivity, userInfo)
+                            FirestoreClass().uploadUserDetails(this@RegisterActivity, userInfo)
                             // to sign the user out of the register activity to the login activity if the registration is successful
                             // TODO: A user interface that allow the user know there is a confirmation link to activate the registered account
 

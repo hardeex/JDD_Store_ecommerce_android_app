@@ -29,7 +29,7 @@
                 android:padding="@dimen/defaultPadding"
                 android:src="@drawable/ic_back_arrow" />
 
-            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomItalicBoldTextView
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomTextViewBold
                 android:id="@+id/tv_complete_userProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

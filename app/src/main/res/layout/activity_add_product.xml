@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".code.ui.activities.AddProductActivity">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/actionBar_addProduct"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/header_background">
+
+            <ImageView
+                android:id="@+id/iv_header_back_arrow_addProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/defaultPadding"
+                android:src="@drawable/ic_back_arrow" />
+
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomTextViewBold
+                android:id="@+id/tv_actionBar_addProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="@dimen/defaultPadding"
+                android:text="Add Product"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/headerTextSize" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:layout_below="@+id/actionBar_addProduct"        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:id="@+id/fl_productImage_addProduct"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/image_height_addProduct"
+                android:layout_gravity="center"
+                android:foregroundGravity="center"
+                android:layout_centerHorizontal="true">
+
+                <ImageView
+                    android:id="@+id/iv_product_image_addProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/product_background_color"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/add_product_camera_addProduct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|bottom"
+                    android:src="@drawable/ic_vector_add_product_camera"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:padding="@dimen/btnEditPadding"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/user_profile_outline" />
+
+            </FrameLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_product_title_addProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_marginStart="@dimen/marginStart"
+                android:layout_marginEnd="@dimen/marginEnd"
+                android:layout_marginTop="@dimen/completeProfile_marginTop"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/black"
+                android:focusableInTouchMode="true"
+                android:layout_below="@id/fl_productImage_addProduct"
+                app:boxStrokeWidthFocused="2dp"
+                app:hintTextColor="@color/black">
+
+                <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/defaultTextSize"
+                    android:textColor="@color/black"
+                    android:hint="Product Title"
+                    android:inputType="text"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_price_and_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_product_title_addProduct"
+                android:layout_marginStart="@dimen/marginStart"
+                android:layout_marginTop="@dimen/marginTop"
+                android:layout_marginEnd="@dimen/marginEnd"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_product_price_addProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@drawable/ic_error"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/black"
+                    android:focusableInTouchMode="true"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:hintTextColor="@color/black"
+                    android:layout_weight="1"
+                   >
+
+                    <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Product Price (NGN)"
+                        android:textSize="@dimen/defaultTextSize"
+                        android:textColor="@color/black"
+                        android:inputType="number"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_product_quantity_addProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@drawable/ic_error"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/black"
+                    android:focusableInTouchMode="true"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:hintTextColor="@color/black"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/marginStart">
+
+                    <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Product Quantity"
+                        android:textSize="@dimen/defaultTextSize"
+                        android:textColor="@color/black"
+                        android:inputType="number"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_product_description_addProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_below="@id/ll_price_and_quantity"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/black"
+                android:focusableInTouchMode="true"
+                app:boxStrokeWidthFocused="2dp"
+                app:hintTextColor="@color/black"
+                android:layout_marginStart="@dimen/marginStart"
+                android:layout_marginEnd="@dimen/marginEnd"
+                android:layout_marginTop="@dimen/marginTop">
+
+                <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Product Description"
+                    android:textSize="@dimen/defaultTextSize"
+                    android:textColor="@color/black"
+                    android:minLines="5"
+                    android:inputType="textMultiLine"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomButton
+                android:id="@+id/btn_save_addProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_product_description_addProduct"
+                android:layout_marginStart="@dimen/marginStart"
+                android:layout_marginTop="@dimen/marginTop"
+                android:layout_marginEnd="@dimen/marginEnd"
+                android:background="@drawable/button_background"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:padding="@dimen/defaultPadding"
+                android:gravity="center"
+                android:text="Save"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/headerTextSize" />
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+</RelativeLayout>

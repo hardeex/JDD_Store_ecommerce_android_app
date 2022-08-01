@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/item_dashboard_margin"
+    android:background="@drawable/item_dashboard_background"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/item_dashboard_padding">
+
+    <ImageView
+        android:id="@+id/iv_dashboard_item_image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_dashboard_image_height"
+        android:layout_margin="@dimen/item_dashboard_image_margin"
+        android:background="@color/product_background_color"
+        android:minHeight="@dimen/item_dashboard_image_height"
+        android:scaleType="fitXY"
+        android:src="@drawable/photo"/>
+
+    <View
+        android:id="@+id/view_divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:background="@color/product_background_color"
+        android:layout_below="@id/iv_dashboard_item_image"/>
+
+    <LinearLayout
+        android:id="@+id/ll_dashboard_item_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dashboard_item_details_bg"
+        android:orientation="vertical"
+        android:layout_below="@id/view_divider"
+        android:paddingStart="@dimen/item_dashboard_paddingStartEnd"
+        android:paddingEnd="@dimen/item_dashboard_paddingStartEnd"
+        android:paddingTop="@dimen/item_dashboard_paddingTopBottom"
+        android:paddingBottom="@dimen/item_dashboard_paddingTopBottom">
+
+        <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomTextViewBold
+            android:id="@+id/tv_dashboard_title_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/item_value_text_color"
+            android:textSize="@dimen/item_dashboard_textSize"
+            android:textStyle="bold"
+            android:text="Product Name"/>
+
+        <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomTextView
+            android:id="@+id/tv_dashboard_price_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/item_dashboard_price_marginTop"
+            android:textColor="@color/item_value_text_color"
+            android:textSize="@dimen/item_dashboard_textSize"
+            android:textStyle="bold"
+            android:text="NGN 500"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

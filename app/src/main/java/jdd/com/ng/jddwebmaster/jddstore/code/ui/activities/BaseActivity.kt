@@ -13,7 +13,7 @@ import jdd.com.ng.jddwebmaster.jddstore.R
 
 open class BaseActivity : AppCompatActivity() {
 
-    private lateinit var mProgressDialogue: Dialog;
+    private lateinit var mProgressDialog: Dialog;
     private var doubleClickToExitOnce = false
 
      fun showSnackBar (message: String, errorMessage: Boolean){
@@ -29,18 +29,18 @@ open class BaseActivity : AppCompatActivity() {
      }
 
     fun showProgressDialogue(message: String){
-        mProgressDialogue = Dialog(this)
+        mProgressDialog = Dialog(this)
         //  val inflate = (this as Activity).layoutInflater.inflate(R.layout.progress_dialogue, null)
         val view = LayoutInflater.from(this).inflate(R.layout.progress_dialogue, null)
         view.findViewById<TextView>(R.id.tv_progress_dialogue).text = message
-        mProgressDialogue.setContentView(view)
-        mProgressDialogue.setCancelable(false)
-        mProgressDialogue.setCanceledOnTouchOutside(false)
-        mProgressDialogue.show()
+        mProgressDialog.setContentView(view)
+        mProgressDialog.setCancelable(false)
+        mProgressDialog.setCanceledOnTouchOutside(false)
+        mProgressDialog.show()
     }
 
     fun dismissProgressDialogue(){
-        mProgressDialogue.dismiss()
+        mProgressDialog.dismiss()
     }
 
     fun doubleClickToExist(){

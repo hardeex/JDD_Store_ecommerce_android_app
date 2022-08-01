@@ -2,15 +2,26 @@ package jdd.com.ng.jddwebmaster.jddstore.code.ui.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import jdd.com.ng.jddwebmaster.jddstore.R
+import jdd.com.ng.jddwebmaster.jddstore.code.cloud_firestore.FirestoreClass
+import jdd.com.ng.jddwebmaster.jddstore.code.model.Product
 import jdd.com.ng.jddwebmaster.jddstore.code.ui.activities.SettingsActivity
+import jdd.com.ng.jddwebmaster.jddstore.code.ui.adapters.MyDashboardAdapter
+import jdd.com.ng.jddwebmaster.jddstore.code.ui.adapters.MyProductListAdapter
 //import jdd.com.ng.jddwebmaster.jddstore.code.myactivities.databinding.FragmentDashboardBinding
 import jdd.com.ng.jddwebmaster.jddstore.databinding.FragmentDashboardBinding
 
-class DashboardFragment : Fragment() {
+class DashboardFragment : BaseFragment() {
+
+    private  lateinit var rv_dashboard_item_list: RecyclerView
+    private lateinit var tv_no_dashboard_item_found: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,34 +29,51 @@ class DashboardFragment : Fragment() {
         setHasOptionsMenu(true)
     }
 
-    private var _binding: FragmentDashboardBinding? = null
+    private fun getDashboardItemList(){
+        showProgressDialogue("Please Wait...")
+        FirestoreClass().getDashboardItemList(this)
+    }
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    fun successDashboardItemListFromFirestore(dashboardItemList: ArrayList<Product>){
+        dismissProgressDialogue()
 
+        if (dashboardItemList.size > 0){
+            rv_dashboard_item_list.visibility = View.VISIBLE
+            tv_no_dashboard_item_found.visibility = View.GONE
+
+            rv_dashboard_item_list.layoutManager = GridLayoutManager(activity, 2)
+            rv_dashboard_item_list.setHasFixedSize(true)
+
+            val dashboardAdapter = MyDashboardAdapter(requireActivity(), dashboardItemList)
+            rv_dashboard_item_list.adapter = dashboardAdapter
+        } else{
+            rv_dashboard_item_list.visibility = View.GONE
+            tv_no_dashboard_item_found.visibility = View.VISIBLE
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        rv_dashboard_item_list = view.findViewById(R.id.rv_product_item_dashboardFragment)
+        tv_no_dashboard_item_found = view.findViewById(R.id.tv_no_item_found_dashboardFragment)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getDashboardItemList()
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        //val dashboardViewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
-
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textDashboard
-//        dashboardViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
-        textView.text = "This is the Dashboard Fragment"
+        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
         return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+    // TODO:ensure the actionBar of each activity is not scrollViewed --- the actionBar should be visible when the user scrolls
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         // create the method to activate the menu at the top
