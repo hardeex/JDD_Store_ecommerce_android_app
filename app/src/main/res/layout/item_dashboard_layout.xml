@@ -16,7 +16,7 @@
         android:background="@color/product_background_color"
         android:minHeight="@dimen/item_dashboard_image_height"
         android:scaleType="fitXY"
-        android:src="@drawable/photo"/>
+        android:src="@drawable/ic_vector_photo"/>
 
     <View
         android:id="@+id/view_divider"
@@ -54,7 +54,7 @@
             android:textColor="@color/item_value_text_color"
             android:textSize="@dimen/item_dashboard_textSize"
             android:textStyle="bold"
-            android:text="NGN 500"/>
+            android:text="NGN 400"/>
 
 
     </LinearLayout>

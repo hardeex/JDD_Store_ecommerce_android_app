@@ -1,10 +1,14 @@
 package jdd.com.ng.jddwebmaster.jddstore.code.ui.fragment
 
+import android.app.AlertDialog
 import android.content.Intent
+import android.graphics.Color.RED
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -36,9 +40,11 @@ class ProductFragment : BaseFragment() {
         if (productList.size > 0){
             rv_product_item.visibility = View.VISIBLE
             tv_no_item_found.visibility = View.GONE
+
             rv_product_item.layoutManager = LinearLayoutManager(activity)
             rv_product_item.setHasFixedSize(true)
-            val productAdapter = MyProductListAdapter(requireActivity(), productList)
+
+            val productAdapter = MyProductListAdapter(requireActivity(), productList, this)
             rv_product_item.adapter = productAdapter
         } else{
             rv_product_item.visibility = View.GONE
@@ -46,11 +52,58 @@ class ProductFragment : BaseFragment() {
         }
         }
 
+    fun deleteProduct(productID: String){
+       // Toast.makeText(requireActivity(), "You can now delete $productID", Toast.LENGTH_SHORT).show()
+
+        showAlertDialogToDeleteProduct(productID)
+    }
+
+    fun deleteProductSuccessfully(){
+        dismissProgressDialogue()
+        Toast.makeText(requireActivity(), "Product delete successfully...", Toast.LENGTH_SHORT).show()
+        getProductListFromFirestore()
+
+    }
+
 
     private  fun getProductListFromFirestore(){
         showProgressDialogue("Please Wait...")
         FirestoreClass().getProductDetails(this)
     }
+
+
+    private fun showAlertDialogToDeleteProduct(productID: String){
+        // create an alert dialog
+        val builder = AlertDialog.Builder(requireActivity())
+        // set the title of the alert dialog
+        builder.setTitle("Delete Product")
+        // set the alert dialog message
+        builder.setMessage("Are you sure you want to delete this product?")
+        // set delete icon alert
+        // TODO: Change the color of the alert Dialog to RED
+        builder.setIcon(android.R.drawable.ic_dialog_alert)
+        // setting the positive alert response
+        builder.setPositiveButton("Yes"){dialogInterface, _->
+            // show progress bar
+            showProgressDialogue("Deleting...")
+                // call the Firestore method for deleting the product
+            FirestoreClass().deleteProduct(this, productID)
+            dialogInterface.dismiss()
+        }
+
+        // setting the negative response of the alert dialog
+        builder.setNegativeButton("No") { dialogInterface, _->
+            dialogInterface.dismiss()
+        }
+
+        // create the alert dialog
+        val alertDialog = builder.create()
+        // avoid the user cancelling the alert with positive or negative response
+        alertDialog.setCancelable(false)
+        // show the alert dialog
+        alertDialog.show()
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

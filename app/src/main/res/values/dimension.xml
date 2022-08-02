@@ -9,6 +9,7 @@
     <dimen name="marginStart">22dp</dimen>
     <dimen name="marginEnd">22dp</dimen>
     <dimen name="marginTop">10dp</dimen>
+
     <dimen name="completeProfile_marginTop">20dp</dimen>
     <dimen name="marginBottom">10dp</dimen>
     <dimen name="userProfilePicture_marginTop">70dp</dimen>

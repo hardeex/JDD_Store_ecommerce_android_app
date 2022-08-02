@@ -33,11 +33,11 @@
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/ll_image_item"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ib_delete_product"
         app:layout_constraintStart_toEndOf="@+id/ll_image_item"
         app:layout_constraintTop_toTopOf="@+id/ll_image_item"
         android:layout_marginStart="@dimen/defaultPadding"
-        android:layout_marginEnd="@dimen/marginEnd">
+        android:layout_marginEnd="@dimen/defaultMargin">
 
         <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomTextViewBold
             android:id="@+id/tv_item_name"
@@ -56,8 +56,20 @@
             android:textColor="@color/item_value_text_color"
             android:textSize="@dimen/rv_item_price_textSize"
             android:textStyle="bold" />
-
-
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/ib_delete_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_vector_delete_24"
+        android:background="@android:color/transparent"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:padding="@dimen/defaultPadding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ll_product_details"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/jddColorTint" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,7 @@ package jdd.com.ng.jddwebmaster.jddstore.code.model
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
-@kotlinx.android.parcel.Parcelize
+@Parcelize
 data class Product(
     val userID: String = "",
     val user_name: String = "",

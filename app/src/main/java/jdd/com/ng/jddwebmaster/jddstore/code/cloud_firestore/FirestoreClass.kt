@@ -17,6 +17,7 @@ import jdd.com.ng.jddwebmaster.jddstore.code.ui.activities.*
 import jdd.com.ng.jddwebmaster.jddstore.code.ui.fragment.DashboardFragment
 import jdd.com.ng.jddwebmaster.jddstore.code.ui.fragment.ProductFragment
 import jdd.com.ng.jddwebmaster.jddstore.code.utils.Constant
+import java.sql.Struct
 
 
 class FirestoreClass {
@@ -212,6 +213,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
                     // create an array of productList
                     val productList:ArrayList<Product> = ArrayList()
 
+                    // check all the product list in the document
                     for (i in document.documents){
                          // create a product object variable
                          val product = i.toObject(Product::class.java)!!
@@ -224,10 +226,21 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
                .addOnFailureListener { error->
                     fragment.dismissProgressDialogue()
                     Log.e(fragment.javaClass.simpleName, "Error!!! Getting dashboard product item list...", error)
-
-
                }
      }
 
+     fun deleteProduct(fragment: ProductFragment, productID: String){
+          mFirestore.collection(Constant.PRODUCT).document(productID).delete()
+
+               .addOnSuccessListener {
+                    fragment.deleteProductSuccessfully()
+               }
+
+
+               .addOnFailureListener {error->
+                    fragment.dismissProgressDialogue()
+                    Log.e(fragment.requireActivity().javaClass.simpleName, "There was an error deleting product" , error)
+               }
+     }
 
 }
