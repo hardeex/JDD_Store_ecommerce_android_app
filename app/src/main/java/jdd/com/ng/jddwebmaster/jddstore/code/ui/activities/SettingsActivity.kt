@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import jdd.com.ng.jddwebmaster.jddstore.R
@@ -24,6 +25,7 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
     private lateinit var username_settings: TextView
     private lateinit var user_address_settings: TextView
     private lateinit var btnLogout_settings: Button
+    private lateinit var ll_user_address_settings: LinearLayout
 
     private lateinit var mUserDetails: User
 
@@ -38,6 +40,7 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
         header_back_arrow_settings.setOnClickListener(this)
         btnLogout_settings.setOnClickListener(this)
         btnEdit_settings.setOnClickListener(this)
+        ll_user_address_settings.setOnClickListener(this)
     }
 
     private fun initiateVariables() {
@@ -50,11 +53,12 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
         user_mobile_number_settings = findViewById(R.id.tv_user_mobileNumber_settings)
         user_address_settings = findViewById(R.id.tv_user_address_settings)
         btnLogout_settings = findViewById(R.id.btn_logout_settings)
+        ll_user_address_settings = findViewById(R.id.ll_user_address_settings)
     }
 
     fun getUserDetailsSuccessfully(user: User){
         mUserDetails = user
-        dismissProgressDialogue()
+        dismissProgressDialog()
         // load the user image
         GlideLoader(this).loadUserImage(user.image, user_image_settings)
         // assign the name, email, gender and mobile number
@@ -96,6 +100,9 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
 
                 }
 
+                R.id.ll_user_address_settings->{
+                    startActivity(Intent(this, AddressListActivity::class.java))
+                }
 
             }
         }

@@ -3,9 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/setting"
+        android:id="@+id/action_setting"
         android:icon="@drawable/ic_baseline_settings_24"
         android:title="Settings"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_cart"
+        android:icon="@drawable/ic_vector_cart"
+        android:title="Cart"
         app:showAsAction="always"/>
 
 </menu>

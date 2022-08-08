@@ -9,6 +9,7 @@ import android.webkit.MimeTypeMap
 object Constant {
     const val SUBSCRIBERS: String = "Subscribers"
     const val PRODUCT: String = "products"
+    const val ADDRESSESS: String = "Addresses"
 
     const val JDD_SHARED_PREFERENCE: String = "JDDSharedPreference"
     const val LOGGED_IN_USER: String = "LoggedInUsername"
@@ -28,7 +29,19 @@ object Constant {
     const val LAST_NAME: String = "user_lastName"
     const val PRODUCT_IMAGE: String = "product_image"
 
-    const val USER_ID: String = "userID"
+    const val USER_ID: String = "user_id"
+    const val EXTRA_PRODUCT_ID = "extra_product_id"
+    const val EXTRA_PRODUCT_OWNER_ID = "extra_product_owner_id"
+
+    const val DEFAULT_CART_QUANTITY: String = "1"
+    const val CART_ITEM: String = "cart_items"
+    const val CART_QUANTITY: String = "cart_quantity"
+
+    const val PRODUCT_ID: String = "product_id"
+
+    const val HOME: String = "home"
+    const val OFFICE: String = "office"
+    const val OTHER: String = "others"
 
 
     // create a function that access images on the user device

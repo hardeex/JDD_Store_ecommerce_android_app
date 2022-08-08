@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".code.ui.activities.AddressListActivity">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar_title_addressActivity"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/header_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_header_back_arrow_addressActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/defaultPadding"
+            android:src="@drawable/ic_back_arrow" />
+
+        <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomTextViewBold
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="@dimen/defaultPadding"
+            android:text="Address"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/headerTextSize" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomTextView
+        android:id="@+id/tv_add_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/btn_add_address_margin"
+        android:background="@drawable/item_primary_color_border_background"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:padding="@dimen/btn_add_address_padding"
+        android:text="@string/lbL_add_address"
+        android:textColor="@color/jddColor"
+        android:textSize="@dimen/add_address_textSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolBar_title_addressActivity" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_address_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/rv_address_list_marginTop"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_add_address" />
+
+    <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomTextView
+        android:id="@+id/tv_no_address_found"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/no_address_found"
+        android:textAlignment="center"
+        android:textColor="@color/colorSecondaryText"
+        android:textSize="@dimen/no_data_found_textSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_add_address" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

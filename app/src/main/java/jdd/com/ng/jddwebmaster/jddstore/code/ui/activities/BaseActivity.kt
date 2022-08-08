@@ -39,8 +39,8 @@ open class BaseActivity : AppCompatActivity() {
         mProgressDialog.show()
     }
 
-    fun dismissProgressDialogue(){
-        mProgressDialog.dismiss()
+    fun dismissProgressDialog(){
+       mProgressDialog.dismiss()
     }
 
     fun doubleClickToExist(){

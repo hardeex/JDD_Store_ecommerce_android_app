@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".code.ui.activities.ProductDetailsActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar_title_productDetails"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/header_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/header_back_arrow_productDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/defaultPadding"
+            android:src="@drawable/ic_back_arrow" />
+
+        <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomTextViewBold
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="@dimen/defaultPadding"
+            android:text="Product Details"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/headerTextSize" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolBar_title_productDetails">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_product_detail_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/product_detail_image_height"
+                android:background="@color/product_background_color"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/ll_product_details_title_and_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/product_details_title_price_marginTop"
+                android:background="@color/dashboard_item_details_bg"
+                android:orientation="vertical"
+                android:padding="@dimen/product_details_title_price_padding"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_product_detail_image">
+
+                <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomTextViewBold
+                    android:id="@+id/tv_product_details_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/item_value_text_color"
+                    android:textSize="@dimen/product_details_title_textSize"
+                    tools:text="Product Title" />
+
+                <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomTextView
+                    android:id="@+id/tv_product_details_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/item_value_text_color"
+                    android:textSize="@dimen/product_details_price_textSize"
+                    tools:text="NGN 600" />
+            </LinearLayout>
+
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomTextViewBold
+                android:id="@+id/tv_product_details_description_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/product_details_label_margin"
+                android:text="Product Description"
+                android:textColor="@color/item_value_text_color"
+                android:textSize="@dimen/product_details_label_textSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ll_product_details_title_and_price" />
+
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomTextView
+                android:id="@+id/tv_product_details_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/product_details_label_margin"
+                android:layout_marginEnd="@dimen/product_details_label_margin"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="@dimen/product_details_description_textSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_product_details_description_label"
+                tools:text="This is product details description." />
+
+            <LinearLayout
+                android:id="@+id/ll_product_details_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/product_details_label_margin"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_product_details_description">
+
+                <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomTextViewBold
+                    android:id="@+id/tv_product_details_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/product_details_stock_quantity_paddingStartEnd"
+                    android:text="Stock Quantity"
+                    android:textColor="@color/item_value_text_color"
+                    android:textSize="@dimen/product_details_label_textSize" />
+
+                <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomTextView
+                    android:id="@+id/tv_product_details_available_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/item_dashboard_background"
+                    android:paddingStart="@dimen/product_details_stock_quantity_paddingStartEnd"
+                    android:paddingTop="@dimen/product_details_stock_quantity_paddingTopBottom"
+                    android:paddingEnd="@dimen/product_details_stock_quantity_paddingStartEnd"
+                    android:paddingBottom="@dimen/product_details_stock_quantity_paddingTopBottom"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/product_details_stock_quantity_textSize"
+                    android:textStyle="bold"
+                    tools:text="5" />
+            </LinearLayout>
+
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomButton
+                android:id="@+id/btn_add_to_cart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginStart"
+                android:layout_marginEnd="@dimen/marginEnd"
+                android:layout_marginBottom="@dimen/marginBottom"
+                android:background="@drawable/button_background"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:padding="@dimen/btnEditPadding"
+                android:text="ADd to Cart"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/headerTextSize"
+                android:textStyle="bold"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/marginStart"
+                app:layout_constraintBottom_toTopOf="@id/btn_go_to_cart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ll_product_details_quantity"
+                tools:visibility="visible" />
+
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomButton
+                android:id="@+id/btn_go_to_cart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginStart"
+                android:layout_marginEnd="@dimen/marginEnd"
+                android:layout_marginBottom="@dimen/marginEnd"
+                android:background="@drawable/button_background"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:padding="@dimen/btnEditPadding"
+                android:text="Go to Cart"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/headerTextSize"
+                android:textStyle="bold"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/marginStart"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_add_to_cart"
+                tools:visibility="visible" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

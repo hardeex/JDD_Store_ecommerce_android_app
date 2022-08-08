@@ -113,7 +113,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                                 Toast.makeText(this@LoginActivity, "Welcome " , Toast.LENGTH_SHORT).show()
 
                             } else{
-                                dismissProgressDialogue()
+                                dismissProgressDialog()
                                 //  when the user try to sign in without verifying the registered email via the confirmation link
                                 Toast.makeText(this,
                                     "Un-verify email account, check ${loginEmail.editText?.text.toString()} for confirmation link",
@@ -128,7 +128,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
                     } // end of the if statement
                     else {
-                        dismissProgressDialogue()
+                        dismissProgressDialog()
                         // when the task is not successful
                         Toast.makeText(this, task.exception!!.message.toString(), Toast.LENGTH_LONG)
                             .show()
@@ -140,7 +140,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
 
     fun userLoggedInSuccessfully(user: User){
-        dismissProgressDialogue()
+        dismissProgressDialog()
         // log the user names and email
         Log.i("First Name: ", user.user_firstName)
         Log.i("Last Name: ", user.user_lastName)

@@ -202,7 +202,7 @@ class UserProfileCompleteActivity : BaseActivity(), View.OnClickListener {
     }
 
     fun userProfileUpdatedInFirestoreSuccessfully(){
-        dismissProgressDialogue()
+        dismissProgressDialog()
         Toast.makeText(this, " Your profile is updated successfully...", Toast.LENGTH_SHORT).show()
         startActivity(Intent(this, DashboardActivity::class.java))
         finish()

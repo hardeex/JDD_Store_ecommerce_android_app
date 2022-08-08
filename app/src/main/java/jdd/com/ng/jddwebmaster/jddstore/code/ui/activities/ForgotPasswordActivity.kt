@@ -47,7 +47,7 @@ class ForgotPasswordActivity : BaseActivity() {
                 showProgressDialogue("Sending Password Rest Link...")
                 FirebaseAuth.getInstance().sendPasswordResetEmail(email)
                     .addOnCompleteListener { task->
-                        dismissProgressDialogue()
+                        dismissProgressDialog()
                         if (task.isSuccessful){
                             //TODO: change the Firebase text for password reset-- The password reset link
                             Toast.makeText(this, "Email sent successfully to $email for resetting your password...", Toast.LENGTH_LONG).show()

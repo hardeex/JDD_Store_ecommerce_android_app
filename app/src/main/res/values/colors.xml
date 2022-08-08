@@ -10,8 +10,12 @@
 
     <!--custom colors-->
     <color name="colorSecondaryVariant">#46518E</color>
+    <color name="colorSecondaryText">#989898</color>
+    <color name="colorOffWhite">#F8F8F8</color>
     <color name="jddColor">#1A33BC</color>
     <color name="jddColorTint">#7983BC</color>
+
+    <color name="colorPrimaryText">#222934</color>
     <color name="red">#FF0000</color>
     <color name="white_gray">#F1F1F1</color>
     <color name="white_grish">#8C8C8C</color>
@@ -22,4 +26,6 @@
     <color name="item_value_text_color">#545353</color>
     
     <color name="dashboard_item_details_bg">#F3F3F3</color>
+    <color name="colorBorder">#E8E6E6</color>
+    <color name="colorDarkGrey">#878787</color>
 </resources>

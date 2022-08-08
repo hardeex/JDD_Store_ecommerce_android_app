@@ -195,7 +195,7 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
 //                            finish()
 
                         }else{
-                            dismissProgressDialogue()
+                            dismissProgressDialog()
                             // if the user registration is not successful
                             Log.e(TAG, "Registration NOT successful")
                             Toast.makeText(this, task.exception!!.message.toString(), Toast.LENGTH_LONG)
@@ -208,7 +208,7 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
 
     fun registerUserSuccessfully(){
         //TODO: implement single account--- No user can create more than one account
-        dismissProgressDialogue()
+        dismissProgressDialog()
         //Toast.makeText(this, "Registration successful...", Toast.LENGTH_SHORT).show()
     }
 

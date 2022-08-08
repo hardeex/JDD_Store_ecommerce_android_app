@@ -1,6 +1,7 @@
 package jdd.com.ng.jddwebmaster.jddstore.code.ui.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import jdd.com.ng.jddwebmaster.jddstore.R
 import jdd.com.ng.jddwebmaster.jddstore.code.model.Product
+import jdd.com.ng.jddwebmaster.jddstore.code.ui.activities.ProductDetailsActivity
 import jdd.com.ng.jddwebmaster.jddstore.code.ui.fragment.ProductFragment
+import jdd.com.ng.jddwebmaster.jddstore.code.utils.Constant
 import jdd.com.ng.jddwebmaster.jddstore.code.utils.GlideLoader
 
 open class MyProductListAdapter (
@@ -39,6 +42,16 @@ open class MyProductListAdapter (
                                 // call the delete method from the productFragment
                                 fragment.deleteProduct(model.product_id)
                         }
+
+                        // make the addProduct activity clickable and navigate to the product details activity
+                        holder.itemView.setOnClickListener {
+                                val intent = Intent(context, ProductDetailsActivity::class.java)
+                                // pass the product id of each product in the cloud Firestore
+                                intent.putExtra(Constant.EXTRA_PRODUCT_ID, model.product_id)
+                                intent.putExtra(Constant.EXTRA_PRODUCT_OWNER_ID, model.user_id)
+                                // start the activity out of the context
+                                context.startActivity(intent)
+                        }
                 }
         }
 
@@ -46,5 +59,5 @@ open class MyProductListAdapter (
                 return list.size
         }
 
-        class MyViewHolder(view:View): RecyclerView.ViewHolder(view)
+        private class MyViewHolder(view:View): RecyclerView.ViewHolder(view)
 }

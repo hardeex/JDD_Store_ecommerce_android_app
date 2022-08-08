@@ -5,17 +5,14 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.view.isEmpty
 import com.google.android.material.textfield.TextInputLayout
 import jdd.com.ng.jddwebmaster.jddstore.R
 import jdd.com.ng.jddwebmaster.jddstore.code.cloud_firestore.FirestoreClass
@@ -23,7 +20,6 @@ import jdd.com.ng.jddwebmaster.jddstore.code.model.Product
 import jdd.com.ng.jddwebmaster.jddstore.code.utils.Constant
 import jdd.com.ng.jddwebmaster.jddstore.code.utils.GlideLoader
 import java.io.IOException
-import java.util.jar.Manifest
 
 class AddProductActivity : BaseActivity(), View.OnClickListener {
 
@@ -120,7 +116,7 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
     }
 
     fun productUploadSuccessfully(){
-        dismissProgressDialogue()
+        dismissProgressDialog()
         Toast.makeText(this, "Product uploaded successfully...", Toast.LENGTH_SHORT).show()
         finish()
 

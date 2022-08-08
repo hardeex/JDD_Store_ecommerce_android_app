@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".code.ui.activities.AddAndEditAddressListActivity">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar_title_addressActivity"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/header_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_header_back_arrow_addAndEditAddressActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/defaultPadding"
+            android:src="@drawable/ic_back_arrow" />
+
+        <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomTextViewBold
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="@dimen/defaultPadding"
+            android:text="Address"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/headerTextSize" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolBar_title_addressActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_full_name"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginStart"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="@dimen/marginEnd"
+                android:hint="@string/hint_full_name"
+                android:textColorHint="@color/colorSecondaryText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error"
+                app:endIconMode="clear_text"
+                android:focusableInTouchMode="true"
+                app:endIconTint="@color/jddColor">
+
+                <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomEditText
+                    android:id="@+id/et_full_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_phone_number"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginStart"
+                android:layout_marginTop="@dimen/marginTop"
+                android:layout_marginEnd="@dimen/marginEnd"
+                android:hint="@string/hint_phone_number"
+                android:textColorHint="@color/colorSecondaryText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_full_name"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error"
+                app:endIconMode="clear_text"
+                android:focusableInTouchMode="true"
+                app:endIconTint="@color/jddColor">
+
+                <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomEditText
+                    android:id="@+id/et_phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_address"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginStart"
+                android:layout_marginTop="@dimen/marginTop"
+                android:layout_marginEnd="@dimen/marginEnd"
+                android:hint="@string/hint_address"
+                android:textColorHint="@color/colorSecondaryText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_phone_number"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error"
+                app:endIconMode="clear_text"
+                android:focusableInTouchMode="true"
+                app:endIconTint="@color/jddColor">
+
+                <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomEditText
+                    android:id="@+id/et_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:minLines="4"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_zip_code"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginStart"
+                android:layout_marginTop="@dimen/marginTop"
+                android:layout_marginEnd="@dimen/marginEnd"
+                android:hint="@string/hint_zip_code"
+                android:textColorHint="@color/colorSecondaryText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_address"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error"
+                app:endIconMode="clear_text"
+                android:focusableInTouchMode="true"
+                app:endIconTint="@color/jddColor">
+
+                <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomEditText
+                    android:id="@+id/et_zip_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_additional_note"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginStart"
+                android:layout_marginTop="@dimen/marginTop"
+                android:layout_marginEnd="@dimen/marginEnd"
+                android:hint="@string/hint_additional_note"
+                android:textColorHint="@color/colorSecondaryText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_zip_code"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_error"
+                app:endIconMode="clear_text"
+                android:focusableInTouchMode="true"
+                app:endIconTint="@color/jddColor">
+
+                <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomEditText
+                    android:id="@+id/et_additional_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RadioGroup
+                android:id="@+id/rg_type"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/add_edit_address_radio_button_height"
+                android:layout_marginStart="@dimen/marginStart"
+                android:layout_marginTop="@dimen/marginTop"
+                android:layout_marginEnd="@dimen/marginEnd"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_additional_note">
+
+                <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomRadioButton
+                    android:id="@+id/rb_home"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/add_edit_address_radio_button_height"
+                    android:layout_weight="1"
+                    android:background="@drawable/gender_tab_selector"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:text="@string/lbl_home"
+                    android:textColor="@drawable/gender_text_color_selector"
+                    android:textStyle="bold" />
+
+                <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomRadioButton
+                    android:id="@+id/rb_office"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/add_edit_address_radio_button_height"
+                    android:layout_marginStart="@dimen/add_edit_address_radio_button_marginStartEnd"
+                    android:layout_marginEnd="@dimen/add_edit_address_radio_button_marginStartEnd"
+                    android:layout_weight="1"
+                    android:background="@drawable/gender_tab_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/lbl_office"
+                    android:textColor="@drawable/gender_text_color_selector"
+                    android:textStyle="bold" />
+
+                <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomRadioButton
+                    android:id="@+id/rb_other"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/add_edit_address_radio_button_height"
+                    android:layout_weight="1"
+                    android:background="@drawable/gender_tab_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/lbl_other"
+                    android:textColor="@drawable/gender_text_color_selector"
+                    android:textStyle="bold" />
+            </RadioGroup>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_other_details"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginStart"
+                android:layout_marginTop="@dimen/marginTop"
+                android:layout_marginEnd="@dimen/marginEnd"
+                android:hint="@string/hint_other_details"
+                android:textColorHint="@color/colorSecondaryText"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rg_type">
+
+                <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomEditText
+                    android:id="@+id/et_other_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomRadioButton
+                android:id="@+id/btn_submit_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/marginStart"
+                android:layout_marginTop="@dimen/marginTop"
+                android:layout_marginEnd="@dimen/marginEnd"
+                android:background="@drawable/button_background"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:paddingTop="@dimen/btn_padding"
+                android:paddingBottom="@dimen/btn_padding"
+                android:text="@string/btn_save_text"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/btn_textSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_other_details" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

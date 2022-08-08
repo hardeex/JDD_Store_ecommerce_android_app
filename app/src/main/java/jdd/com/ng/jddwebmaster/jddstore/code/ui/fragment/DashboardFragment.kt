@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import jdd.com.ng.jddwebmaster.jddstore.R
 import jdd.com.ng.jddwebmaster.jddstore.code.cloud_firestore.FirestoreClass
 import jdd.com.ng.jddwebmaster.jddstore.code.model.Product
+import jdd.com.ng.jddwebmaster.jddstore.code.ui.activities.CartListActivity
 import jdd.com.ng.jddwebmaster.jddstore.code.ui.activities.SettingsActivity
 import jdd.com.ng.jddwebmaster.jddstore.code.ui.adapters.MyDashboardItemListAdapter
+
 //import jdd.com.ng.jddwebmaster.jddstore.code.myactivities.databinding.FragmentDashboardBinding
 
 class DashboardFragment : BaseFragment() {
@@ -40,6 +42,15 @@ class DashboardFragment : BaseFragment() {
 
             val dashboardAdapter = MyDashboardItemListAdapter(requireActivity(), dashboardItemList)
             rv_dashboard_item_list.adapter = dashboardAdapter
+
+            // implement the custom onClickListener from the dashboard adapter activity
+//           dashboardAdapter.setOnClickListener(object : MyDashboardItemListAdapter.OnClickListener {
+//               override fun onClick(position: Int, product: Product) {
+//                   val intent = Intent(context, ProductDetailsActivity::class.java)
+//                   intent.putExtra(Constant.EXTRA_PRODUCT_ID, product.product_id)
+//                   startActivity(intent)
+//               }
+//           })
         } else{
             rv_dashboard_item_list.visibility = View.GONE
             tv_no_dashboard_item_found.visibility = View.VISIBLE
@@ -82,8 +93,13 @@ class DashboardFragment : BaseFragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.setting->{
+            R.id.action_setting->{
                 startActivity(Intent(activity, SettingsActivity::class.java))
+                return true
+            }
+
+            R.id.action_cart->{
+                startActivity(Intent(activity, CartListActivity::class.java))
                 return true
             }
         }

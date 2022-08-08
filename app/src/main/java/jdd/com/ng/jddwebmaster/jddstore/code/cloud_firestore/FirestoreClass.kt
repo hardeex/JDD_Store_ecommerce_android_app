@@ -5,19 +5,20 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
+import jdd.com.ng.jddwebmaster.jddstore.code.model.Address
+import jdd.com.ng.jddwebmaster.jddstore.code.model.CartItem
 import jdd.com.ng.jddwebmaster.jddstore.code.model.Product
 import jdd.com.ng.jddwebmaster.jddstore.code.model.User
 import jdd.com.ng.jddwebmaster.jddstore.code.ui.activities.*
 import jdd.com.ng.jddwebmaster.jddstore.code.ui.fragment.DashboardFragment
 import jdd.com.ng.jddwebmaster.jddstore.code.ui.fragment.ProductFragment
 import jdd.com.ng.jddwebmaster.jddstore.code.utils.Constant
-import java.sql.Struct
+import jdd.com.ng.jddwebmaster.jddstore.code.utils.Constant.USER_ID
 
 
 class FirestoreClass {
@@ -36,7 +37,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
                }
 
                .addOnFailureListener {
-                    activity.dismissProgressDialogue()
+                    activity.dismissProgressDialog()
                }
      }
 
@@ -83,11 +84,11 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
                .addOnFailureListener { error->
                     when(activity){
                          is LoginActivity ->{
-                              activity.dismissProgressDialogue()
+                              activity.dismissProgressDialog()
                          }
 
                          is SettingsActivity->{
-                              activity.dismissProgressDialogue()
+                              activity.dismissProgressDialog()
                          }
                     }
 
@@ -113,7 +114,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
                .addOnFailureListener { error->
                     when(activity){
                          is UserProfileCompleteActivity ->{
-                              activity.dismissProgressDialogue()
+                              activity.dismissProgressDialog()
                          }
                     }
                     Log.e(activity.javaClass.simpleName, "Error, updating user datails", error)
@@ -149,11 +150,11 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
                .addOnFailureListener{exception->
                     when(activity){
                          is UserProfileCompleteActivity ->{
-                              activity.dismissProgressDialogue()
+                              activity.dismissProgressDialog()
                          }
 
                          is AddProductActivity->{
-                              activity.dismissProgressDialogue()
+                              activity.dismissProgressDialog()
                          }
                     }
                     Log.e(activity.javaClass.simpleName, exception.message, exception)
@@ -169,14 +170,31 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
                }
 
                .addOnFailureListener { error->
-                    activity.dismissProgressDialogue()
+                    activity.dismissProgressDialog()
                     Log.e(activity.javaClass.simpleName, "Error!!! uploading product to the Firestore", error)
                }
 
      }
 
+     fun getProductDetails(activity: ProductDetailsActivity, productID: String){
+          mFirestore.collection(Constant.PRODUCT).document(productID).get()
+
+               .addOnSuccessListener { document->
+                    Log.i(activity.javaClass.simpleName, document.toString())
+                    // since we have gotten the product using the .get()--- let's create an object of the product using the document
+                    val product = document.toObject(Product::class.java)!!
+                    activity.getProductDetailsSuccessful(product)
+               }
+
+
+               .addOnFailureListener { error->
+                    activity.dismissProgressDialog()
+                    Log.e(activity.javaClass.simpleName, "Error!!! getting product details from the Firestore", error)
+               }
+     }
+
      fun getProductDetails(fragment: Fragment){
-          mFirestore.collection(Constant.PRODUCT).whereEqualTo(Constant.USER_ID, getUserCurrentID()).get()
+          mFirestore.collection(Constant.PRODUCT).whereEqualTo(USER_ID, getUserCurrentID()).get()
 
                .addOnSuccessListener {document->
                     Log.i("Product Details", document.documents.toString())
@@ -201,7 +219,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
                     }
                }
                .addOnFailureListener { error->
-                    Log.i(fragment.javaClass.simpleName, "Error!!! Getting product lists from the cloud", error)
+                    Log.e(fragment.javaClass.simpleName, "Error!!! Getting product lists from the cloud", error)
                }
      }
 
@@ -242,5 +260,148 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
                     Log.e(fragment.requireActivity().javaClass.simpleName, "There was an error deleting product" , error)
                }
      }
+
+     fun addCartItemToFirestore(activity: ProductDetailsActivity, addToCart: CartItem){
+          mFirestore.collection(Constant.CART_ITEM).document().set(addToCart, SetOptions.merge())
+
+               .addOnSuccessListener {
+                    activity.addToCartSuccess()
+               }
+
+               .addOnFailureListener { error->
+                    activity.dismissProgressDialog()
+                    Log.e(activity.javaClass.simpleName, "Error!!! creating item in the cart", error)
+               }
+     }
+
+     fun checkIfItemExistsInCart(activity: ProductDetailsActivity, product_id: String){
+          mFirestore.collection(Constant.CART_ITEM).whereEqualTo(Constant.USER_ID, getUserCurrentID())
+               .whereEqualTo(Constant.PRODUCT_ID, product_id).get()
+
+               .addOnSuccessListener {document->
+                    Log.i(activity.javaClass.simpleName, document.documents.toString())
+                    if (document.documents.size > 0){
+                         activity.productExistInCart()
+                    } else{
+                         activity.dismissProgressDialog()
+                    }
+
+               }
+
+               .addOnFailureListener {  error->
+                    activity.dismissProgressDialog()
+                    Log.e(activity.javaClass.simpleName, "Error!!! checking if cart exists in the cart", error)
+               }
+     }
+
+     fun getCartList(activity: Activity){
+          // get each user cart item
+          mFirestore.collection(Constant.CART_ITEM).whereEqualTo(Constant.USER_ID, getUserCurrentID()).get()
+
+               .addOnSuccessListener { document->
+                    Log.i(activity.javaClass.simpleName, document.documents.toString())
+                    // get a list of cart items
+                    val list: ArrayList<CartItem> = ArrayList()
+                    // loop through all of the document
+                    for (i in document){
+                         // convert each element/document in the loop to an object-- that is, cartItems object
+                         val cartItem = i.toObject(CartItem::class.java)
+                         cartItem.id = i.id
+                         list.add(cartItem)
+                    }
+
+                    when(activity){
+                         is CartListActivity->{
+                              activity.successfullyGetCartItemList(list)
+                         }
+                    }
+               }
+
+               .addOnFailureListener { error->
+                    Log.e(activity.javaClass.simpleName, "Error!!!getting cart list items", error)
+                    when(activity){
+                         is CartListActivity->{
+                              activity.dismissProgressDialog()
+                         }
+                    }
+               }
+     }
+
+     fun getAllProductList(activity: CartListActivity){
+          mFirestore.collection(Constant.PRODUCT).get()
+
+               .addOnSuccessListener { document->
+                    Log.i(activity.javaClass.simpleName, document.documents.toString())
+                    // create an array list of product
+                    val productList: ArrayList<Product> = ArrayList()
+                    // run a for loop through the document to get the product list
+                    for (i in document){
+                         val product = i.toObject(Product::class.java)
+                         product.product_id = i.id
+                         productList.add(product)
+                    }
+                    activity.successfullyGetProductListFromFirestore(productList)
+               }
+
+               .addOnFailureListener { error->
+                    activity.dismissProgressDialog()
+                    Log.e(activity.javaClass.simpleName, "Error.. getting all product list", error)
+               }
+     }
+
+     fun removeItemFromCart(context: Context, cart_id: String){
+          mFirestore.collection(Constant.CART_ITEM).document(cart_id).delete()
+
+               .addOnSuccessListener {
+                    when(context){
+                         is CartListActivity->{
+                              context.itemRemovedSuccess()
+                         }
+                    }
+               }
+               .addOnFailureListener {error->
+                    when(context){
+                         is CartListActivity->{
+                              context.dismissProgressDialog()
+                         }
+                    }
+                    Log.e(context.javaClass.simpleName, "Error.. removing item from cart item list", error)
+               }
+     }
+
+     fun updateMyCart(context: Context, cart_id: String, itemHashMap: HashMap<String, Any>){
+          mFirestore.collection(Constant.CART_ITEM).document(cart_id).update(itemHashMap)
+
+               .addOnSuccessListener {
+                    when(context){
+                         is CartListActivity->{
+                              context.itemUpdateSuccessfully()
+                         }
+                    }
+               }
+
+               .addOnFailureListener {error->
+                    when(context){
+                         is CartListActivity->{
+                              context.dismissProgressDialog()
+                         }
+                    }
+                    Log.e(context.javaClass.simpleName, "Error.. updating cart item", error)
+               }
+     }
+
+     fun adduserAddresses(activity: AddAndEditAddressListActivity, addressInfo: Address){
+          mFirestore.collection(Constant.ADDRESSESS).document().set(addressInfo, SetOptions.merge())
+
+               .addOnSuccessListener {
+                    activity.addUserAddressSuccessfully()
+               }
+
+               .addOnFailureListener { error->
+                    Log.e(activity.javaClass.simpleName, "Error.. updating user address", error)
+               }
+     }
+
+
 
 }
