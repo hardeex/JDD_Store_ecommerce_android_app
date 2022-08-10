@@ -30,6 +30,8 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
     private lateinit var mUserDetails: User
 
 
+    // TODO: consider changing the UI error to snackBar or Toast message
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)

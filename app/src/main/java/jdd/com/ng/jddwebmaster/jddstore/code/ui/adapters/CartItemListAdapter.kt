@@ -19,7 +19,8 @@ import org.w3c.dom.Text
 
 class CartItemListAdapter (
     private val context: Context,
-    private val list: ArrayList<CartItem>
+    private val list: ArrayList<CartItem>,
+    private val updateCartItems: Boolean
 
         ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -44,13 +45,28 @@ class CartItemListAdapter (
                 holder.itemView.findViewById<ImageButton>(R.id.ib_remove_cart_item).visibility = View.GONE
                 holder.itemView.findViewById<ImageButton>(R.id.ib_add_cart_item).visibility = View.GONE
 
+                if (updateCartItems){
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_delete_cart_item).visibility = View.VISIBLE
+                } else{
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_delete_cart_item).visibility = View.GONE
+                }
+
                 holder.itemView.findViewById<TextView>(R.id.tv_cart_quantity).text = context.resources.getString(R.string.lbl_out_of_stock)
 
                 holder.itemView.findViewById<TextView>(R.id.tv_cart_quantity).setTextColor( ContextCompat.getColor(context, R.color.red))
 
             } else{
-                holder.itemView.findViewById<ImageButton>(R.id.ib_remove_cart_item).visibility = View.VISIBLE
-                holder.itemView.findViewById<ImageButton>(R.id.ib_add_cart_item).visibility = View.VISIBLE
+                if (updateCartItems){
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_remove_cart_item).visibility = View.VISIBLE
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_add_cart_item).visibility = View.VISIBLE
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_delete_cart_item).visibility = View.VISIBLE
+                } else{
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_remove_cart_item).visibility = View.GONE
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_add_cart_item).visibility = View.GONE
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_delete_cart_item).visibility = View.GONE
+                }
+
+
                 holder.itemView.findViewById<TextView>(R.id.tv_cart_quantity).setTextColor( ContextCompat.getColor(context, R.color.colorSecondaryText))
             }
 

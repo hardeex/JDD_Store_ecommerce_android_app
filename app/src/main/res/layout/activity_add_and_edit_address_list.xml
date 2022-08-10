@@ -24,6 +24,7 @@
             android:src="@drawable/ic_back_arrow" />
 
         <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomTextViewBold
+            android:id="@+id/tv_title_EditAddressActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -128,7 +129,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine"
-                    android:minLines="4"
+                    android:minLines="3"
                     android:padding="@dimen/et_padding"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/et_textSize" />
@@ -136,7 +137,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_zip_code"
+                android:id="@+id/til_additional_phone_number"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -155,10 +156,10 @@
                 app:endIconTint="@color/jddColor">
 
                 <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomEditText
-                    android:id="@+id/et_zip_code"
+                    android:id="@+id/et_additional_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="phone"
                     android:padding="@dimen/et_padding"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/et_textSize" />
@@ -176,7 +177,7 @@
                 android:textColorHint="@color/colorSecondaryText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/til_zip_code"
+                app:layout_constraintTop_toBottomOf="@id/til_additional_phone_number"
                 app:errorEnabled="true"
                 app:errorIconDrawable="@drawable/ic_error"
                 app:endIconMode="clear_text"
@@ -187,7 +188,8 @@
                     android:id="@+id/et_additional_note"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:minLines="3"
+                    android:inputType="textMultiLine"
                     android:padding="@dimen/et_padding"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/et_textSize" />
@@ -270,20 +272,22 @@
                     android:textSize="@dimen/et_textSize" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomRadioButton
+
+            <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomButton
                 android:id="@+id/btn_submit_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="@dimen/marginStart"
-                android:layout_marginTop="@dimen/marginTop"
-                android:layout_marginEnd="@dimen/marginEnd"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/button_background"
                 android:foreground="?attr/selectableItemBackground"
                 android:gravity="center"
                 android:paddingTop="@dimen/btn_padding"
                 android:paddingBottom="@dimen/btn_padding"
-                android:text="@string/btn_save_text"
+                android:layout_marginBottom="@dimen/marginBottom"
+                android:text="Save"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/btn_textSize"
                 app:layout_constraintEnd_toEndOf="parent"

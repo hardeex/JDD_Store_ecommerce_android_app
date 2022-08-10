@@ -314,6 +314,10 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
                          is CartListActivity->{
                               activity.successfullyGetCartItemList(list)
                          }
+
+                         is CheckoutActivity->{
+                              activity.successCartItemList(list)
+                         }
                     }
                }
 
@@ -323,11 +327,15 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
                          is CartListActivity->{
                               activity.dismissProgressDialog()
                          }
+
+                         is CheckoutActivity->{
+                              activity.dismissProgressDialog()
+                         }
                     }
                }
      }
 
-     fun getAllProductList(activity: CartListActivity){
+     fun getAllProductList(activity: Activity){
           mFirestore.collection(Constant.PRODUCT).get()
 
                .addOnSuccessListener { document->
@@ -340,12 +348,32 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
                          product.product_id = i.id
                          productList.add(product)
                     }
-                    activity.successfullyGetProductListFromFirestore(productList)
+
+
+                    when(activity){
+                         is CartListActivity->{
+                              activity.successfullyGetProductListFromFirestore(productList)
+                         }
+
+                         is CheckoutActivity->{
+                              activity.successProductListFromFirestore(productList)
+                         }
+                    }
+
                }
 
                .addOnFailureListener { error->
-                    activity.dismissProgressDialog()
                     Log.e(activity.javaClass.simpleName, "Error.. getting all product list", error)
+
+                    when(activity){
+                         is CartListActivity->{
+                              activity.dismissProgressDialog()
+                         }
+
+                         is CheckoutActivity->{
+                              activity.dismissProgressDialog()
+                         }
+                    }
                }
      }
 
@@ -403,5 +431,52 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
      }
 
 
+     fun getUserAddressList(activity: AddressListActivity){
+          mFirestore.collection(Constant.ADDRESSESS).whereEqualTo(Constant.USER_ID, getUserCurrentID()).get()
+
+               .addOnSuccessListener {document->
+                    Log.i(activity.javaClass.simpleName, document.documents.toString())
+                    // create an instance of address list
+                    val addressList: ArrayList<Address> = ArrayList()
+                    // a loop that runs through the document to generates the address list
+                    for (i in document.documents){
+                         val address = i.toObject(Address::class.java)!!
+                         address.id = i.id
+                         addressList.add(address)
+                    }
+                    activity.addressAddSuccessfullyFromFirestore(addressList)
+               }
+               .addOnFailureListener {  error->
+                    activity.dismissProgressDialog()
+                    Log.e(activity.javaClass.simpleName, "Error.. getting user address", error)
+               }
+     }
+
+     fun updateAddress(activity: AddAndEditAddressListActivity, addressInfo: Address, addressId: String) {
+          mFirestore.collection(Constant.ADDRESSESS).document(addressId)
+               // Here the userInfo are Field and the SetOption is set to merge. It is for if we wants to merge
+               .set(addressInfo, SetOptions.merge())
+               .addOnSuccessListener {
+
+                    // Here call a function of base activity for transferring the result to it.
+                    activity.addUserAddressSuccessfully()
+               }
+               .addOnFailureListener { e ->
+                    activity.dismissProgressDialog()
+                    Log.e(activity.javaClass.simpleName, "Error while updating the Address.", e)
+               }
+     }
+
+     fun deleteUserAddress (activity: AddressListActivity, addressId: String){
+          mFirestore.collection(Constant.ADDRESSESS).document(addressId).delete()
+
+               .addOnSuccessListener {
+                    activity.deleteUserAddressSuccessfully()
+               }
+
+               .addOnFailureListener { e ->
+                    activity.dismissProgressDialog()
+                    Log.e(activity.javaClass.simpleName, "Error while deleting the Address.", e) }
+     }
 
 }

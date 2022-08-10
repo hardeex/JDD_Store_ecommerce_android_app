@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/JDD/AndroidStudioProjects/JDDStore/app/src/main/res/drawable/app_gradient_color_background.xml" value="0.174" />
         <entry key="..\:/Users/JDD/AndroidStudioProjects/JDDStore/app/src/main/res/drawable/bottom_nav_backgroubd.xml" value="0.1" />
         <entry key="..\:/Users/JDD/AndroidStudioProjects/JDDStore/app/src/main/res/drawable/button_background.xml" value="0.1" />
         <entry key="..\:/Users/JDD/AndroidStudioProjects/JDDStore/app/src/main/res/drawable/gender_tab_selector.xml" value="0.1235" />
@@ -27,6 +28,7 @@
         <entry key="..\:/Users/JDD/AndroidStudioProjects/JDDStore/app/src/main/res/layout/activity_addreess_list.xml" value="0.209375" />
         <entry key="..\:/Users/JDD/AndroidStudioProjects/JDDStore/app/src/main/res/layout/activity_cart_list.xml" value="0.209375" />
         <entry key="..\:/Users/JDD/AndroidStudioProjects/JDDStore/app/src/main/res/layout/activity_chat.xml" value="0.209375" />
+        <entry key="..\:/Users/JDD/AndroidStudioProjects/JDDStore/app/src/main/res/layout/activity_checkout.xml" value="0.22" />
         <entry key="..\:/Users/JDD/AndroidStudioProjects/JDDStore/app/src/main/res/layout/activity_dashboard.xml" value="0.209375" />
         <entry key="..\:/Users/JDD/AndroidStudioProjects/JDDStore/app/src/main/res/layout/activity_forgot_password.xml" value="0.209375" />
         <entry key="..\:/Users/JDD/AndroidStudioProjects/JDDStore/app/src/main/res/layout/activity_login.xml" value="0.209375" />
@@ -42,6 +44,7 @@
         <entry key="..\:/Users/JDD/AndroidStudioProjects/JDDStore/app/src/main/res/layout/fragment_chat.xml" value="0.1" />
         <entry key="..\:/Users/JDD/AndroidStudioProjects/JDDStore/app/src/main/res/layout/fragment_dashboard.xml" value="0.209375" />
         <entry key="..\:/Users/JDD/AndroidStudioProjects/JDDStore/app/src/main/res/layout/fragment_product.xml" value="0.209375" />
+        <entry key="..\:/Users/JDD/AndroidStudioProjects/JDDStore/app/src/main/res/layout/item_address_layout.xml" value="0.33" />
         <entry key="..\:/Users/JDD/AndroidStudioProjects/JDDStore/app/src/main/res/layout/item_cart_item_layout.xml" value="0.33" />
         <entry key="..\:/Users/JDD/AndroidStudioProjects/JDDStore/app/src/main/res/layout/item_dashboard_layout.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/JDD/AndroidStudioProjects/JDDStore/app/src/main/res/layout/item_list_layout.xml" value="0.22" />

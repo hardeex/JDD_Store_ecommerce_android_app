@@ -1,5 +1,6 @@
 package jdd.com.ng.jddwebmaster.jddstore.code.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
@@ -10,6 +11,7 @@ import jdd.com.ng.jddwebmaster.jddstore.code.cloud_firestore.FirestoreClass
 import jdd.com.ng.jddwebmaster.jddstore.code.model.CartItem
 import jdd.com.ng.jddwebmaster.jddstore.code.model.Product
 import jdd.com.ng.jddwebmaster.jddstore.code.ui.adapters.CartItemListAdapter
+import jdd.com.ng.jddwebmaster.jddstore.code.utils.Constant
 
 class  CartListActivity : BaseActivity(), View.OnClickListener {
 
@@ -38,6 +40,7 @@ class  CartListActivity : BaseActivity(), View.OnClickListener {
         supportActionBar?.hide()
         initializeVariable()
         btn_header_back_arrow.setOnClickListener(this)
+        btn_check_out_cart_list_activity.setOnClickListener(this)
     }
 
     private fun initializeVariable() {
@@ -87,7 +90,7 @@ class  CartListActivity : BaseActivity(), View.OnClickListener {
            rv_cart_list_activity.setHasFixedSize(true)
 
            // assign adapter to the recycler view
-           val cartItemListAdapter = CartItemListAdapter(this, cartList)
+           val cartItemListAdapter = CartItemListAdapter(this, mCartListItem, true)
            rv_cart_list_activity.adapter = cartItemListAdapter
 
            // set the sub-total amount to double
@@ -170,6 +173,13 @@ class  CartListActivity : BaseActivity(), View.OnClickListener {
 
                 R.id.header_back_arrow_cartList_activity->{
                     onBackPressed()
+                }
+
+                R.id.btn_checkout->{
+                    val intent = Intent(this, AddressListActivity::class.java)
+                    intent.putExtra(Constant.EXTRA_SELECT_ADDRESS, true)
+                    startActivity(intent)
+
                 }
             }
         }
