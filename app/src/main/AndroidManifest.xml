@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JDDStore">
         <activity
+            android:name=".MyOrderDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".code.ui.activities.CheckoutActivity"
             android:exported="false" />
         <activity

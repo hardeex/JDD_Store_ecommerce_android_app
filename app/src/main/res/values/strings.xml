@@ -61,7 +61,9 @@
     <string name="checkout_lbl_items_receipt">Items Receipt</string>
     <string name="lbl_payment_mode">Payment Mode</string>
     <string name="lbl_cash_on_delivery">Cash On Delivery</string>
-    <string name="btn_lbl_place_order">PLACE ORDER</string>
+    <string name="btn_lbl_place_order">ORDER</string>
+    <string name="place_order">Placing Order....</string>
+    <string name="no_orders_placed_yet">No Order Placed Yet.....</string>
 
 
     <!--END-->

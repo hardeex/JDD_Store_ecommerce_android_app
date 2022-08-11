@@ -10,12 +10,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
-import jdd.com.ng.jddwebmaster.jddstore.code.model.Address
-import jdd.com.ng.jddwebmaster.jddstore.code.model.CartItem
-import jdd.com.ng.jddwebmaster.jddstore.code.model.Product
-import jdd.com.ng.jddwebmaster.jddstore.code.model.User
+import jdd.com.ng.jddwebmaster.jddstore.code.model.*
 import jdd.com.ng.jddwebmaster.jddstore.code.ui.activities.*
 import jdd.com.ng.jddwebmaster.jddstore.code.ui.fragment.DashboardFragment
+import jdd.com.ng.jddwebmaster.jddstore.code.ui.fragment.OrderFragment
 import jdd.com.ng.jddwebmaster.jddstore.code.ui.fragment.ProductFragment
 import jdd.com.ng.jddwebmaster.jddstore.code.utils.Constant
 import jdd.com.ng.jddwebmaster.jddstore.code.utils.Constant.USER_ID
@@ -26,11 +24,11 @@ class FirestoreClass {
 I'm using Cloud Firestore to enable the views of every individual unique
 The first step is to import the Firebase-Firestore and create an instance of Firestore
  */
-     private val mFirestore = FirebaseFirestore.getInstance()
+     private val mFireStore = FirebaseFirestore.getInstance()
 
      fun uploadUserDetails(activity: RegisterActivity, user:User){
           // This method is to some of the user data to the Google Firestore
-          mFirestore.collection(Constant.SUBSCRIBERS).document(user.id).set(user, SetOptions.merge())
+          mFireStore.collection(Constant.SUBSCRIBERS).document(user.id).set(user, SetOptions.merge())
 
                .addOnSuccessListener {
                     activity.registerUserSuccessfully()
@@ -53,7 +51,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
 
      fun getUserDetails(activity: Activity){
           // This method is to retrieve the user details oe info from the Google Firestore and display unique info the each user based on the activity
-          mFirestore.collection(Constant.SUBSCRIBERS).document(getUserCurrentID()).get()
+          mFireStore.collection(Constant.SUBSCRIBERS).document(getUserCurrentID()).get()
 
                .addOnSuccessListener { document->
                     Log.i(activity.javaClass.simpleName, document.toString())
@@ -97,7 +95,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
      }
 
      fun updateUserProfileDetails(activity: Activity, userHashMap: HashMap<String, Any>){
-          mFirestore.collection(Constant.SUBSCRIBERS).document(getUserCurrentID()).update(userHashMap)
+          mFireStore.collection(Constant.SUBSCRIBERS).document(getUserCurrentID()).update(userHashMap)
 
                .addOnSuccessListener {
                     when(activity){
@@ -163,7 +161,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
      }
 
      fun uploadProductDetails(activity: AddProductActivity, productDetails: Product){
-          mFirestore.collection(Constant.PRODUCT).document().set(productDetails, SetOptions.merge())
+          mFireStore.collection(Constant.PRODUCT).document().set(productDetails, SetOptions.merge())
 
                .addOnSuccessListener {
                     activity.productUploadSuccessfully()
@@ -177,7 +175,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
      }
 
      fun getProductDetails(activity: ProductDetailsActivity, productID: String){
-          mFirestore.collection(Constant.PRODUCT).document(productID).get()
+          mFireStore.collection(Constant.PRODUCT).document(productID).get()
 
                .addOnSuccessListener { document->
                     Log.i(activity.javaClass.simpleName, document.toString())
@@ -194,7 +192,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
      }
 
      fun getProductDetails(fragment: Fragment){
-          mFirestore.collection(Constant.PRODUCT).whereEqualTo(USER_ID, getUserCurrentID()).get()
+          mFireStore.collection(Constant.PRODUCT).whereEqualTo(USER_ID, getUserCurrentID()).get()
 
                .addOnSuccessListener {document->
                     Log.i("Product Details", document.documents.toString())
@@ -224,7 +222,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
      }
 
      fun getDashboardItemList(fragment: DashboardFragment){
-          mFirestore.collection(Constant.PRODUCT).get()
+          mFireStore.collection(Constant.PRODUCT).get()
 
                .addOnSuccessListener { document->
                     Log.i(fragment.javaClass.simpleName, document.documents.toString())
@@ -248,7 +246,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
      }
 
      fun deleteProduct(fragment: ProductFragment, productID: String){
-          mFirestore.collection(Constant.PRODUCT).document(productID).delete()
+          mFireStore.collection(Constant.PRODUCT).document(productID).delete()
 
                .addOnSuccessListener {
                     fragment.deleteProductSuccessfully()
@@ -262,7 +260,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
      }
 
      fun addCartItemToFirestore(activity: ProductDetailsActivity, addToCart: CartItem){
-          mFirestore.collection(Constant.CART_ITEM).document().set(addToCart, SetOptions.merge())
+          mFireStore.collection(Constant.CART_ITEM).document().set(addToCart, SetOptions.merge())
 
                .addOnSuccessListener {
                     activity.addToCartSuccess()
@@ -275,7 +273,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
      }
 
      fun checkIfItemExistsInCart(activity: ProductDetailsActivity, product_id: String){
-          mFirestore.collection(Constant.CART_ITEM).whereEqualTo(Constant.USER_ID, getUserCurrentID())
+          mFireStore.collection(Constant.CART_ITEM).whereEqualTo(Constant.USER_ID, getUserCurrentID())
                .whereEqualTo(Constant.PRODUCT_ID, product_id).get()
 
                .addOnSuccessListener {document->
@@ -296,7 +294,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
 
      fun getCartList(activity: Activity){
           // get each user cart item
-          mFirestore.collection(Constant.CART_ITEM).whereEqualTo(Constant.USER_ID, getUserCurrentID()).get()
+          mFireStore.collection(Constant.CART_ITEM).whereEqualTo(Constant.USER_ID, getUserCurrentID()).get()
 
                .addOnSuccessListener { document->
                     Log.i(activity.javaClass.simpleName, document.documents.toString())
@@ -336,7 +334,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
      }
 
      fun getAllProductList(activity: Activity){
-          mFirestore.collection(Constant.PRODUCT).get()
+          mFireStore.collection(Constant.PRODUCT).get()
 
                .addOnSuccessListener { document->
                     Log.i(activity.javaClass.simpleName, document.documents.toString())
@@ -378,7 +376,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
      }
 
      fun removeItemFromCart(context: Context, cart_id: String){
-          mFirestore.collection(Constant.CART_ITEM).document(cart_id).delete()
+          mFireStore.collection(Constant.CART_ITEM).document(cart_id).delete()
 
                .addOnSuccessListener {
                     when(context){
@@ -398,7 +396,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
      }
 
      fun updateMyCart(context: Context, cart_id: String, itemHashMap: HashMap<String, Any>){
-          mFirestore.collection(Constant.CART_ITEM).document(cart_id).update(itemHashMap)
+          mFireStore.collection(Constant.CART_ITEM).document(cart_id).update(itemHashMap)
 
                .addOnSuccessListener {
                     when(context){
@@ -419,7 +417,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
      }
 
      fun adduserAddresses(activity: AddAndEditAddressListActivity, addressInfo: Address){
-          mFirestore.collection(Constant.ADDRESSESS).document().set(addressInfo, SetOptions.merge())
+          mFireStore.collection(Constant.ADDRESSES).document().set(addressInfo, SetOptions.merge())
 
                .addOnSuccessListener {
                     activity.addUserAddressSuccessfully()
@@ -432,7 +430,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
 
 
      fun getUserAddressList(activity: AddressListActivity){
-          mFirestore.collection(Constant.ADDRESSESS).whereEqualTo(Constant.USER_ID, getUserCurrentID()).get()
+          mFireStore.collection(Constant.ADDRESSES).whereEqualTo(Constant.USER_ID, getUserCurrentID()).get()
 
                .addOnSuccessListener {document->
                     Log.i(activity.javaClass.simpleName, document.documents.toString())
@@ -453,7 +451,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
      }
 
      fun updateAddress(activity: AddAndEditAddressListActivity, addressInfo: Address, addressId: String) {
-          mFirestore.collection(Constant.ADDRESSESS).document(addressId)
+          mFireStore.collection(Constant.ADDRESSES).document(addressId)
                // Here the userInfo are Field and the SetOption is set to merge. It is for if we wants to merge
                .set(addressInfo, SetOptions.merge())
                .addOnSuccessListener {
@@ -468,7 +466,7 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
      }
 
      fun deleteUserAddress (activity: AddressListActivity, addressId: String){
-          mFirestore.collection(Constant.ADDRESSESS).document(addressId).delete()
+          mFireStore.collection(Constant.ADDRESSES).document(addressId).delete()
 
                .addOnSuccessListener {
                     activity.deleteUserAddressSuccessfully()
@@ -476,7 +474,129 @@ The first step is to import the Firebase-Firestore and create an instance of Fir
 
                .addOnFailureListener { e ->
                     activity.dismissProgressDialog()
-                    Log.e(activity.javaClass.simpleName, "Error while deleting the Address.", e) }
+                    Log.e(activity.javaClass.simpleName, "Error while deleting the Address.", e)
+               }
      }
 
-}
+     fun placeOrder(activity: CheckoutActivity, order: Order){
+          mFireStore.collection(Constant.ORDER). document().set(order, SetOptions.merge())
+
+               .addOnSuccessListener {
+                    activity.placeOrderSuccessful()
+               }
+
+               .addOnFailureListener {  e ->
+                    activity.dismissProgressDialog()
+                    Log.e(activity.javaClass.simpleName, "Error while placing an order.", e)
+               }
+     }
+
+     fun updateAllCartDetails(activity: CheckoutActivity, cartList: ArrayList<CartItem>) {
+//          // create a Firestore batch to allow to do multiple things at the same time
+//          val writeBatch = mFireStore.batch()
+//
+//          for (createCartItem in cartList) {
+//               // create a product hashMap of Any
+//               val productHashMap = HashMap<String, Any>()
+//               // use the product hashMap to add the stock quantity constant and assign value to it
+//               productHashMap[Constant.STOCK_QUANTITY] =
+//                    (createCartItem.stock_quantity.toInt() - createCartItem.cart_quantity.toInt()).toString()
+//               // create a document reference to the product collection
+//               val createDocumentReference =
+//                    mFireStore.collection(Constant.PRODUCT).document(createCartItem.product_id)
+//               // update the document reference using the writeBatch
+//               writeBatch.update(createDocumentReference, productHashMap)
+//
+//               // Delete the list of cart items
+//               for (deleteCartItems in cartList) {
+//
+//                    val deleteDocumentReferences =
+//                         mFireStore.collection(Constant.CART_ITEM).document(deleteCartItems.id)
+//                    writeBatch.delete(deleteDocumentReferences)
+//               }
+//
+//               // commit or implement the update and deleting batch
+//               writeBatch.commit()
+//
+//                    .addOnSuccessListener {
+//
+//                         // TODO Step 4: Finally after performing all the operation notify the user with the success result.
+//                         // START
+//                         activity.allDetailsUpdatedSuccessfully()
+//                    }
+//
+//                    .addOnFailureListener { error ->
+//                         activity.dismissProgressDialog()
+//                         Log.e(
+//                              activity.javaClass.simpleName,
+//                              "Error while updating all the details after order placed.",
+//                              error
+//                         )
+//                    }
+//
+//
+//          }
+
+
+          val writeBatch = mFireStore.batch()
+
+          // Here we will update the product stock in the products collection based to cart quantity.
+          for (cart in cartList) {
+
+               val productHashMap = HashMap<String, Any>()
+
+               productHashMap[Constant.STOCK_QUANTITY] =
+                    (cart.stock_quantity.toInt() - cart.cart_quantity.toInt()).toString()
+
+               val documentReference = mFireStore.collection(Constant.PRODUCT)
+                    .document(cart.product_id)
+
+               writeBatch.update(documentReference, productHashMap)
+          }
+
+          // Delete the list of cart items
+          for (cart in cartList) {
+
+               val documentReference = mFireStore.collection(Constant.CART_ITEM)
+                    .document(cart.id)
+               writeBatch.delete(documentReference)
+          }
+
+          writeBatch.commit().addOnSuccessListener {
+
+               // TODO Step 4: Finally after performing all the operation notify the user with the success result.
+               // START
+               activity.allDetailsUpdatedSuccessfully()
+               // END
+
+          }.addOnFailureListener { e ->
+               // Here call a function of base activity for transferring the result to it.
+               activity.dismissProgressDialog()
+
+               Log.e(activity.javaClass.simpleName, "Error while updating all the details after order placed.", e)
+          }
+     }
+
+     fun getMyOrderList(fragment:OrderFragment){
+          mFireStore.collection(Constant.ORDER).whereEqualTo(Constant.USER_ID, getUserCurrentID()).get()
+
+               .addOnSuccessListener { document->
+                    // create an arrayList of order
+                    val list: ArrayList<Order> = ArrayList()
+                    // run through the list of order
+                    for (i in document.documents){
+                         val orderItem = i.toObject(Order::class.java)!!
+                         orderItem.id = i.id
+                         list.add(orderItem)
+                    }
+                    fragment.populateOrderItemList(list)
+               }
+
+               .addOnFailureListener {error->
+                    fragment.dismissProgressDialogue()
+                    Log.e(fragment.javaClass.simpleName, "Error while getting order list from Firestore", error)
+               }
+     }
+
+     }
+

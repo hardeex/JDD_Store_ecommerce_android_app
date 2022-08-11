@@ -115,11 +115,11 @@ class  CartListActivity : BaseActivity(), View.OnClickListener {
            tv_subTotal_value_cart_list.text ="NGN ${subTotal}"
            // TODO: write the logic for the shipping price
            // set a fixed cost for the shipping cost for now
-           tv_shipping_charge_value_cart_list.text = "NGN 150" // TODO: change the shipping charge logic
+           tv_shipping_charge_value_cart_list.text = "NGN 250" // TODO: change the shipping charge logic
 
            if (subTotal > 0){
                ll_check_out_cart_activity.visibility = View.VISIBLE
-               val total = subTotal + 150 // TODO: change the logic for the shipping price
+               val total = subTotal + 250 // TODO: change the logic for the shipping price
                tv_total_amount_value_cart_list.text = "NGN ${total}"
            } else{
                ll_check_out_cart_activity.visibility = View.GONE

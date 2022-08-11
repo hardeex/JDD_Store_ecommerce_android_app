@@ -35,6 +35,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         hideActionBar()
 
         // TODO: Enable the user to login automatically via the Google account
+        //TODO: set the Listener for the iv_header_arrow
 
         // initialize the XML ID
         loginEmail = findViewById(R.id.tv_login_email)

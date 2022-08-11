@@ -6,6 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".code.ui.activities.LoginActivity">
 
+   <androidx.appcompat.widget.Toolbar
+       android:id="@+id/toolbar_checkout_activity"
+       android:layout_width="match_parent"
+       android:layout_height="?attr/actionBarSize"
+       android:layout_alignParentTop="true"
+       android:background="@drawable/app_gradient_color_background"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toTopOf="parent">
+
+      <ImageView
+          android:id="@+id/iv_header_back_arrow_login_activity"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="@dimen/defaultPadding"
+          android:src="@drawable/ic_back_arrow" />
+
+      <jdd.com.ng.jddwebmaster.jddstore.code.utils.MyCustomTextViewBold
+          android:id="@+id/tv_title_checkout_activity"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:gravity="center"
+          android:paddingStart="@dimen/toolbar_title_paddingStart"
+          android:paddingEnd="0dp"
+          android:text="LogIn"
+          app:textAllCaps="true"
+          android:textColor="@color/white"
+          android:textSize="@dimen/toolbar_title_text_size"
+          android:textStyle="bold" />
+
+   </androidx.appcompat.widget.Toolbar>
    <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"

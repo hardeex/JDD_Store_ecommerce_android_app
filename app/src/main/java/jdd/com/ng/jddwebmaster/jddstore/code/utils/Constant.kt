@@ -9,7 +9,8 @@ import android.webkit.MimeTypeMap
 object Constant {
     const val SUBSCRIBERS: String = "Subscribers"
     const val PRODUCT: String = "products"
-    const val ADDRESSESS: String = "Addresses"
+    const val ADDRESSES: String = "Addresses"
+    const val ORDER: String = "Order"
 
     const val JDD_SHARED_PREFERENCE: String = "JDDSharedPreference"
     const val LOGGED_IN_USER: String = "LoggedInUsername"
@@ -36,6 +37,8 @@ object Constant {
     const val DEFAULT_CART_QUANTITY: String = "1"
     const val CART_ITEM: String = "cart_items"
     const val CART_QUANTITY: String = "cart_quantity"
+
+    const val STOCK_QUANTITY: String ="stock_quantity"
 
     const val PRODUCT_ID: String = "product_id"
 
